@@ -57,13 +57,8 @@ export class JogadoresController {
 
   @Post()
   @UsePipes(ValidationPipe)
-  async criarAtualizarJugador(
-    @Body() criarJogadorDto: CriarJogadorDto,
-    @Res() res,
-  ) {
-    const jogador = await this.jogadoresService.criarAtualizarJugador(
-      criarJogadorDto,
-    );
+  async criarJugador(@Body() criarJogadorDto: CriarJogadorDto, @Res() res) {
+    const jogador = await this.jogadoresService.criarJugador(criarJogadorDto);
     return res.status(HttpStatus.OK).json({
       isSuccess: true,
       jogador,

@@ -8,6 +8,7 @@ import { JogadorSchema } from './schemas/Jogador.schema';
   imports: [
     MongooseModule.forFeature([{ name: 'Jogador', schema: JogadorSchema }]),
   ],
+  exports: [JogadoresService],
   controllers: [JogadoresController],
   providers: [JogadoresService],
 })
