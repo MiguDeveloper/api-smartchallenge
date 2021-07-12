@@ -2,7 +2,7 @@ import { BadRequestException, Logger } from '@nestjs/common';
 import { ArgumentMetadata } from '@nestjs/common';
 import { PipeTransform } from '@nestjs/common';
 
-export class JogadoresValidacaoParametrosPipe implements PipeTransform {
+export class ValidacaoParametrosPipe implements PipeTransform {
   logger = new Logger();
   transform(value: any, metadata: ArgumentMetadata) {
     if (!value) {

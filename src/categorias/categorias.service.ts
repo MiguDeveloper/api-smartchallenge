@@ -2,13 +2,15 @@ import { JogadoresService } from './../jogadores/jogadores.service';
 import { ActualizarCategoriaDto } from './dto/actualizar-categoria.dto';
 import { CriarCategoriaDto } from './dto/criar-categoria.dto';
 import { Categoria } from './interfaces/categoria.interface';
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, Logger } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class CategoriasService {
+  private readonly logger = new Logger(CategoriasService.name);
+
   constructor(
     @InjectModel('Categoria') private readonly categoriaModel: Model<Categoria>,
     private readonly jogadoresService: JogadoresService,
@@ -60,7 +62,7 @@ export class CategoriasService {
       throw new NotFoundException(`ID de categoria ${categoriaID} no existe`);
     }
 
-    if (categoriaFound && categoriaFound._id !== categoriaID) {
+    if (categoriaFound && categoriaFound._id != categoriaID) {
       throw new BadRequestException(
         `Categoria ${actualizarCategoriaDto.categoria} ya existe`,
       );

@@ -1,4 +1,4 @@
-import { JogadoresValidacaoParametrosPipe } from './pipes/jogadores-validacao-parametros.pipe';
+import { ValidacaoParametrosPipe } from '../common/pipes/validacao-parametros.pipe';
 import {
   HttpStatus,
   NotFoundException,
@@ -26,7 +26,7 @@ export class JogadoresController {
 
   @Get('/byid')
   async getJogadorById(
-    @Query('jogadorID', JogadoresValidacaoParametrosPipe) jogadorID: string,
+    @Query('jogadorID', ValidacaoParametrosPipe) jogadorID: string,
     @Res() res,
   ) {
     const jogador = await this.jogadoresService.getJogadorById(jogadorID);
@@ -42,7 +42,7 @@ export class JogadoresController {
 
   @Get('/byemail')
   async getJogadorByEmail(
-    @Query('email', JogadoresValidacaoParametrosPipe) email: string,
+    @Query('email', ValidacaoParametrosPipe) email: string,
     @Res() res,
   ) {
     const jogador = await this.jogadoresService.getJogadorByEmail(email);
@@ -68,7 +68,7 @@ export class JogadoresController {
   @Put()
   async updateJogador(
     @Body() criarJogadorDto: CriarJogadorDto,
-    @Query('jogadorID', JogadoresValidacaoParametrosPipe) jogadorID: string,
+    @Query('jogadorID', ValidacaoParametrosPipe) jogadorID: string,
     @Res() res,
   ) {
     const jogador = await this.jogadoresService.updateJogador(
@@ -88,7 +88,7 @@ export class JogadoresController {
 
   @Delete()
   async deletejogador(
-    @Query('jogadorID', JogadoresValidacaoParametrosPipe) jogadorID: string,
+    @Query('jogadorID', ValidacaoParametrosPipe) jogadorID: string,
     @Res() res,
   ) {
     const jogador = await this.jogadoresService.deleteJogador(jogadorID);
