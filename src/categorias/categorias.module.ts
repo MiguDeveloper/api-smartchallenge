@@ -10,6 +10,7 @@ import { CategoriasService } from './categorias.service';
     MongooseModule.forFeature([{ name: 'Categoria', schema: CategoriaSchema }]),
     JogadoresModule,
   ],
+  exports: [CategoriasService],
   controllers: [CategoriasController],
   providers: [CategoriasService],
 })

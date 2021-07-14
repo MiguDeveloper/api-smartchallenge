@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { JogadoresModule } from './jogadores/jogadores.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { DesafiosModule } from './desafios/desafios.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CategoriasModule } from './categorias/categorias.module';
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.DATABASE_CONNECTION),
     CategoriasModule,
+    DesafiosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

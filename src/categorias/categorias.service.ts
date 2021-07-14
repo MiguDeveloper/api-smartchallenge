@@ -110,4 +110,17 @@ export class CategoriasService {
 
     return categoriaUpdate;
   }
+
+  async getCategoriaByJogadorId(jogadorID: string): Promise<Categoria> {
+    const jogador = await this.jogadoresService.getJogadorById(jogadorID);
+    if (!jogador) {
+      throw new BadRequestException(`jogador ID ${jogadorID} no existe`);
+    }
+    const categoria = await this.categoriaModel
+      .findOne()
+      .where('jogadores')
+      .in([jogadorID]);
+
+    return categoria;
+  }
 }
